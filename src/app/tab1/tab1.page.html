@@ -12,48 +12,24 @@
 
   <ion-list>
 
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let filme of listaVideos">
 
       <ion-item lines="full">
         <ion-thumbnail slot="start">
-          <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg">
+          <img [src]="filme.cartaz">
         </ion-thumbnail>
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>Mortal Kombat (2021)</h1>
-            <p>04/15/2021 (BR) - 1h50min</p>
-            <p>Action, Fantasy, Adventure</p>
+            <h1>{{filme.nome}}</h1>
+            <p>{{filme.lancamento}} - {{filme.duracao}}</p>
+            <ion-badge color="light" *ngFor="let genero of filme.generos">
+              {{genero}}
+            </ion-badge>
           </div>
         </ion-label>
 
         <ion-chip color="success" outline>
-          <ion-label>76%</ion-label>
-        </ion-chip>
-      </ion-item>
-
-      <ion-item-options side="end">
-        <ion-item-option color="laranja" (click)="exibirAlertaFavorito()">
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding>
-
-      <ion-item lines="full">
-        <ion-thumbnail slot="start">
-          <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg">
-        </ion-thumbnail>
-        <ion-label class="ion-text-wrap">
-          <div>
-            <h1>Justice League (2021)</h1>
-            <p>03/18/2021 (BR) - 4h02min</p>
-            <p>Action, Adventure, Fantasy, Science Fiction</p>
-          </div>
-        </ion-label>
-
-        <ion-chip color="success" outline>
-          <ion-label>83%</ion-label>
+          <ion-label>{{filme.classificacao}}%</ion-label>
         </ion-chip>
       </ion-item>
 

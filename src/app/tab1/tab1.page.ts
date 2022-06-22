@@ -24,7 +24,7 @@ export class Tab1Page {
     {
       nome: 'Justice League (2021)',
       lancamento: '03/18/2021',
-      duracao: '4h 02m',
+      duracao: '4h 2m',
       classificacao: 83,
       cartaz: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg',
       generos: ['Action', 'Adventure', 'Fantasy', 'Science Fiction']
