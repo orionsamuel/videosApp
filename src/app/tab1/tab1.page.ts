@@ -1,7 +1,9 @@
+import { DadosService } from './../services/dados.service';
 import { IFilme } from '../models/IFilme.model';
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +21,8 @@ export class Tab1Page {
       duracao: '1h 50m',
       classificacao: 76,
       cartaz: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg',
-      generos: ['Action', 'Fantasy', 'Adventure']
+      generos: ['Action', 'Fantasy', 'Adventure'],
+      pagina: '/mortal-kombat'
     },
     {
       nome: 'Justice League (2021)',
@@ -27,11 +30,21 @@ export class Tab1Page {
       duracao: '4h 2m',
       classificacao: 83,
       cartaz: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg',
-      generos: ['Action', 'Adventure', 'Fantasy', 'Science Fiction']
+      generos: ['Action', 'Adventure', 'Fantasy', 'Science Fiction'],
+      pagina: '/justice-league'
     }
   ];
 
-  constructor(public alertController: AlertController, public toastController: ToastController) {}
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public route: Router) {}
+
+    exibirFilme(filme: IFilme){
+      this.dadosService.guardarDados('filme', filme);
+      this.route.navigateByUrl('/dados-filme');
+    }
 
   async exibirAlertaFavorito() {
     const alert = await this.alertController.create({
